@@ -1,8 +1,10 @@
 package com.xuanpeng.mvvmsamplechapter1.viewmodel;
 
+import android.databinding.Bindable;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 
+import com.xuanpeng.mvvmsamplechapter1.BR;
 import com.xuanpeng.mvvmsamplechapter1.R;
 import com.xuanpeng.mvvmsamplechapter1.model.*;
 import com.xuanpeng.mvvmsamplechapter1.model.Error;
@@ -25,6 +27,8 @@ public class LoginViewModel extends BaseViewModel {
 
     //登录成功后界面显示的toke
     private String token;
+
+    @Bindable
     public String getToken() {
         return token;
     }
@@ -36,6 +40,8 @@ public class LoginViewModel extends BaseViewModel {
             //token 不为空的话，添加Hello World文本
             this.token = token+"\nHello World";
         }
+
+        notifyPropertyChanged(BR.token);
     }
 
     private boolean isEmailValid(String email) {
